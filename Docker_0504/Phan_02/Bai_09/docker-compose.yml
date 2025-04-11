@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build: .
+    ports:
+      - "5000:5000"  # Ánh xạ cổng 5000 từ container ra máy chủ
+    environment:
+      - FLASK_APP=app.py  # Thiết lập biến môi trường cho ứng dụng Flask
+      - FLASK_ENV=development  # Chạy ứng dụng Flask trong môi trường phát triển

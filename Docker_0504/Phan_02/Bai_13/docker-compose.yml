@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis
+    container_name: redis-limited
+    mem_limit: 200m     # Giới hạn RAM 200MB
+    cpus: "0.5"         # Giới hạn CPU 50%

@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest  # Sử dụng image Redis mới nhất từ Docker Hub
+    ports:
+      - "6379:6379"       # Ánh xạ cổng 6379 của container với cổng 6379 của máy chủ
+    volumes:
+      - redis-data:/data  # Lưu trữ dữ liệu Redis vào volume ngoài container
+
+volumes:
+  redis-data:
+    driver: local
