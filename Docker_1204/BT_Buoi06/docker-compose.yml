@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  product-service:
+    build: ./product-service
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_URI=mongodb://tinh123:tinh123@cluster0.fvi23ev.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+  order-service:
+    build: ./order-service
+    ports:
+      - "3002:3002"
+    environment:
+      - MONGO_URI=mongodb://tinh123:tinh123@order.exr7u3u.mongodb.net/?retryWrites=true&w=majority&appName=order
+
+  customer-service:
+    build: ./customer-service
+    ports:
+      - "3003:3003"
+    environment:
+      - MONGO_URI=mongodb://tinh123:tinh123@customer-shard-00-00.tompbtf.mongodb.net:27017,customer-shard-00-01.tompbtf.mongodb.net:27017,customer-shard-00-02.tompbtf.mongodb.net:27017/customer?ssl=true&replicaSet=atlas-n3anlv-shard-0&authSource=admin&retryWrites=true&w=majority&appName=customer
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3000:3000"
